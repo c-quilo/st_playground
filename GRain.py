@@ -13,7 +13,7 @@ st.set_page_config(
 st.title('Generating rainfall patterns')
 st.markdown('Generative rainfall patterns over South America based on PERSIANN')
 
-PATH = st.secrets['PATH']
+PATH = '' #st.secrets['PATH']
 
 if st.button('Generate rainfall samples'):
     result = predict(1, PATH)
