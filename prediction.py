@@ -1,5 +1,5 @@
 import torch
-import lightning as pl
+import pytorch_lightning as pl
 from torch import nn
 import numpy as np
 import streamlit as st
