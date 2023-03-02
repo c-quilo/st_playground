@@ -94,7 +94,6 @@ class VAE(pl.LightningModule):
 def predict(num_preds, PATH):
     vae = VAE()
     vae.load_state_dict(torch.load(f'{PATH}vae.pt', map_location='cpu'))
-    print(vae)
     min_input = np.load(f'{PATH}min_input.npy')
     max_input = np.load(f'{PATH}max_input.npy')
     rand_v = torch.rand((num_preds, 32))
@@ -105,8 +104,6 @@ def predict(num_preds, PATH):
     z = torch.FloatTensor(z)
     with torch.no_grad():
         pred = vae.decoder(z).cpu()
-        print(pred)
-
     def inverseScaler(xscaled, xmin, xmax, min, max):
         scale = (max - min) / (xmax - xmin)
         xInv = (xscaled/scale) - (min/scale) + xmin
